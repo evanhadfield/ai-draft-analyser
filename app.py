@@ -4,6 +4,8 @@ from pdf_processor import extract_text_from_pdf_url, extract_text_from_pdf_file
 from text_processor import clean_text, split_text
 from embedding_creator import create_embeddings
 from pinecone_uploader import upload_to_pinecone
+from rag_scorer import run_rag_scorer
+
 
 st.title("PDF Processor and Pinecone Uploader")
 
@@ -37,3 +39,8 @@ if 'text' in locals() and text:
           embeddings = create_embeddings(chunks)
           upload_to_pinecone(chunks, embeddings)
       st.success("Text processed and uploaded to Pinecone successfully!")
+  if st.button("Run RAG Scorer"):
+        with st.spinner("Running RAG Scorer..."):
+            result = run_rag_scorer()
+        st.success("RAG Scoring complete!")
+        st.write(result)
