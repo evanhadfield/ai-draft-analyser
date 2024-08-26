@@ -11,9 +11,19 @@ def delete_all_vectors():
 
 def upload_to_pinecone(texts, text_embeddings):
   delete_all_vectors()
-  vectors = [
-      (f"doc_{i}", embedding, {"text": text})
-      for i, (text, embedding) in enumerate(zip(texts, text_embeddings))
-  ]
-  index.upsert(vectors=vectors)
-  print(f"Uploaded {len(vectors)} vectors to Pinecone index '{PINECONE_INDEX_NAME}'")
+  
+  # Split the vectors into smaller batches to avoid exceeding the 2MB limit
+  batch_size = 100  # Adjust this value as needed
+  for i in range(0, len(texts), batch_size):
+      batch_texts = texts[i:i+batch_size]
+      batch_embeddings = text_embeddings[i:i+batch_size]
+      
+      vectors = [
+          (f"doc_{j}", embedding, {"text": text})
+          for j, (text, embedding) in enumerate(zip(batch_texts, batch_embeddings), start=i)
+      ]
+      
+      index.upsert(vectors=vectors)
+      print(f"Uploaded batch of {len(vectors)} vectors to Pinecone index '{PINECONE_INDEX_NAME}'")
+  
+  print(f"Finished uploading all vectors to Pinecone index '{PINECONE_INDEX_NAME}'")
