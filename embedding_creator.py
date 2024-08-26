@@ -1,5 +1,5 @@
 # embedding_creator.py
-from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from config import OPENAI_API_KEY
 
 def create_embeddings(texts):
