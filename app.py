@@ -7,7 +7,7 @@ from pinecone_uploader import upload_to_pinecone
 from rag_scorer import run_rag_scorer
 
 
-st.title("PDF Processor and Pinecone Uploader")
+st.title("Civis-AI Powered Draft Analyser")
 
 upload_method = st.radio("Choose upload method:", ("Upload PDF", "Enter PDF URL"))
 

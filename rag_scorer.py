@@ -102,7 +102,9 @@ Comprehension Improvement Recommendations: [recommendations]
 
 def get_scores_and_recommendations(qa_chain):
   # This query is designed to retrieve relevant information from the document
-  query  = "Provide a summary of the policy change, its justification, the outlined changes or new provisions, its potential impacts, and an assessment of its clarity and comprehensibility."
+  query  = """Provide a summary of the policy change, its justification, 
+  the outlined changes or new provisions, its potential impacts,
+  and an assessment of its clarity and comprehensibility."""
   
   # # Count tokens in the query
   # query_tokens = count_tokens(query)
