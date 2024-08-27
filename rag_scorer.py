@@ -24,7 +24,9 @@ def create_rag():
 
   # Create the prompt template
   template = """
-  Based on the following context and criteria, provide scores for Justification and Essential Elements, along with reasons and recommendations:
+  Based on the following context and criteria, 
+  provide scores for Justification and Essential Elements, 
+  along with reasons and recommendations:
 
   Context: {context}
 
