@@ -1,4 +1,4 @@
-# policy_examples.py
+# examples.py
 
 POLICY_EXAMPLES = [
   {
@@ -9,22 +9,21 @@ POLICY_EXAMPLES = [
       establishing clear guidelines for broadcasters and network operators. The potential impact includes stricter regulation, enhanced accessibility, and clearer content standards. 
       The bill is detailed and comprehensive, offering clear guidelines but might be complex for general understanding
       """,
-      "scores": """
-       Justification Score : 4
-       Justification Reason: a proper justification regarding the draft have been provided in the explanatory notes under the title introduction.
-       it provides adequate information regarding the context and relevance of this draft.
+      "scores": """Justification Score : 4
+    Justification Reason: a proper justification regarding the draft have been provided in the explanatory notes under the title introduction.
+    it provides adequate information regarding the context and relevance of this draft.
 
-       Essential Elements Score: 5
-       Essential Elements Reason: chapter 2 deals with the regulation of broadcasting services which includes requirement,
-       general obligation, guidelines for the broadcasters., approval and renewal of registrations, etc.
+    Essential Elements Score: 5
+    Essential Elements Reason: chapter 2 deals with the regulation of broadcasting services which includes requirement,
+    general obligation, guidelines for the broadcasters., approval and renewal of registrations, etc.
 
-       Impact Assessment Score: 5
-       Impact Assessment Reason: various assessment like social and financial assessment can be found.
+    Impact Assessment Score: 5
+    Impact Assessment Reason: various assessment like social and financial assessment can be found.
        it mentions provisions related to grievance redressal and majorly focuses on financial elements like fine structure, penalties and penal provisions in chapter 5. page 53 to 58 provides a detailed quantum of penalties. 
        these are provided in a well structured and detailed manner. a major highlight among the assessment includes providing provisions of guidelines for accessibility to differently abled. the draft in general shows a greater government control of broadcast.
 
-       Comprehension Score:  5
-       Comprehension Reason: definitions are provided in the beginning of the draft. 
+    Comprehension Score:  5
+    Comprehension Reason: definitions are provided in the beginning of the draft. 
        the language used is in an understandable form for an average reader. 
        tables have been provided to comprehend the data, especially while explaining the penal provisions.
        in the last part of the draft, it provides an explanatory notes for all the major provisions discussed.
@@ -38,8 +37,7 @@ POLICY_EXAMPLES = [
       It seeks to enhance research, development, and commercialization, fostering a skilled workforce.
       The strategy is clear, emphasizing self-reliance and global competitiveness
       """,
-      "scores": """
-       Justification Score : 5
+      "scores": """Justification Score : 5
        Justification Reason: vision, mission and objectives of the draft by mentioning the relevance of robotics followed by introduction to robotics, types of robots and the relevance of AI in the field of robotics are provided in a detailed manner. global scenario and Indian scenario related to this is also given which helps us in providing an overview from a global analysis. the draft also discuss about the challenges in the Indian robotic system. a structured and detailed background and contextual information is provided.
 
        Essential Elements Score: 5
@@ -61,8 +59,7 @@ POLICY_EXAMPLES = [
       The policy is clear, comprehensible, and aligned with the "Aatma Nirbhar Bharat" initiative.
 
       """,
-      "scores": """
-       Justification Score : 5
+      "scores": """Justification Score : 5
        Justification Reason:a preamble followed by an industrial overview is provided along 
        with supporting data. the preamble gives a detailed overview of the contextual 
        and historical background of the draft. mission, vision and objective of the draft 
@@ -93,8 +90,7 @@ POLICY_EXAMPLES = [
       The policy is clear and comprehensive, likely to drive balanced regional growth and entrepreneurship.
 
       """,
-      "scores": """
-       Justification Score : 5
+      "scores": """Justification Score : 5
        Justification Reason: a good preamble and introduction has been given stating the importance of this policy to a state like Meghalaya which aims to become one of the top 10 states in India by fostering economic and human capital growth. it also states how this policy is trying to consolidate multiple initiatives to foster economic growth. geographical boundaries, growth rates are also provided along with a mini history. major objectives are also given
 
        Essential Elements Score: 4
@@ -118,8 +114,7 @@ POLICY_EXAMPLES = [
       The document is detailed but may be complex for general comprehension
 
       """,
-      "scores": """
-       Justification Score : 1
+      "scores": """Justification Score : 1
        Justification Reason: The Draft has a preface but it doesn't provide any justification for repealing previous laws. It makes an attempt to explain the context in the last sentence but it is not enough.
 
        Essential Elements Score: 5
