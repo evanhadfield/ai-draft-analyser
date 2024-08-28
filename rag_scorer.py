@@ -61,30 +61,22 @@ Comprehension Criteria:
   Please provide:
 1. Justification Score (1-5)
 2. Reason for Justification Score
-3. Recommendations for improvement of Justification Score
-4. Essential Elements Score (1-5)
-5. Reason for Essential Elements Score
-6. Recommendations for improvement of Essential Elements Score
-7. Impact Assessment Score (1-5)
-8. Reason for Impact Assessment Score
-9. Recommendations for improvement of Impact Assessment Score
-10. Comprehension Score (1-5)
-11. Reason for Comprehension Score
-12. Recommendations for improvement of Comprehension Score
+3. Essential Elements Score (1-5)
+4. Reason for Essential Elements Score
+5. Impact Assessment Score (1-5)
+6. Reason for Impact Assessment Score
+7. Comprehension Score (1-5)
+8. Reason for Comprehension Score
 
 Format your response as follows:
 Justification Score: [score]
 Justification Reason: [reason]
-Justification Improvement Recommendations: [recommendations]
 Essential Elements Score: [score]
 Essential Elements Reason: [reason]
-Essential Elements Improvement Recommendations: [recommendations]
 Impact Assessment Score: [score]
 Impact Assessment Reason: [reason]
-Impact Assessment Improvement Recommendations: [recommendations]
 Comprehension Score: [score]
 Comprehension Reason: [reason]
-Comprehension Improvement Recommendations: [recommendations]
 """
 
   prompt = PromptTemplate(
