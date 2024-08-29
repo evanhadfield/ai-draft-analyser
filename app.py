@@ -33,14 +33,14 @@ if 'text' in locals() and text:
   cleaned_text = clean_text(text)
   st.write(f"Cleaned text length: {len(cleaned_text)} characters")
   
-  if st.button("Process and Upload to Pinecone"):
+  if st.button("Process and Upload"):
       with st.spinner("Processing and uploading..."):
           chunks = split_text(cleaned_text)
           embeddings = create_embeddings(chunks)
           upload_to_pinecone(chunks, embeddings)
-      st.success("Text processed and uploaded to Pinecone successfully!")
-  if st.button("Run RAG Scorer"):
-        with st.spinner("Running RAG Scorer..."):
+      st.success("Text processed and uploaded successfully!")
+  if st.button("Run Scorer"):
+        with st.spinner("Running Scorer..."):
             result = run_rag_scorer()
-        st.success("RAG Scoring complete!")
+        st.success("Scoring complete!")
         st.write(result)
