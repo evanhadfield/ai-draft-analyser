@@ -40,7 +40,25 @@ if 'text' in locals() and text:
           upload_to_pinecone(chunks, embeddings)
       st.success("Text processed and uploaded successfully!")
   if st.button("Run Scorer"):
-        with st.spinner("Running Scorer..."):
-            result = run_rag_scorer()
-        st.success("Scoring complete!")
-        st.write(result)
+    with st.spinner("Running Scorer..."):
+        result = run_rag_scorer()
+    
+    st.success("Scoring complete!")
+    
+    # Split the result into separate components for each category
+    lines = result.split("\n")
+    
+    for line in lines:
+        if "Score:" in line and "Reason:" in line:
+            try:
+                score_part, reason_part = line.split("Reason:")
+                
+                # Display the score on a separate line
+                st.write(score_part.strip())
+                
+                # Display the reason on a new line
+                st.write(f"Reason: {reason_part.strip()}")
+            except ValueError:
+                st.error("Error processing line: " + line)
+        else:
+            st.write(line.strip())
