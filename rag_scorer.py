@@ -37,6 +37,7 @@ def create_rag():
       prefix="""You are an AI assistant tasked with evaluating policy drafts. Based on the given context and criteria, provide scores and reasons for Justification, Essential Elements, Impact Assessment, and Comprehension. Format your response exactly as shown in the examples, with each score on its own line and each reason on a new line immediately following its corresponding score.
 
 Justification Criteria:
+(Whether the need for the policy change and the context in which it is being proposed has been adequately explained) 
 5 - Outstanding: Provides a thorough and compelling explanation of the need for policy change, with detailed context and strong evidence supporting the proposal.
 4 - Exceeds Expectations: Clearly explains the need for the policy change with good contextual information and adequate supporting evidence.
 3 - Meets Expectations: Satisfactorily explains the need for the policy change with basic contextual information, but some details or evidence may be lacking.
@@ -44,6 +45,7 @@ Justification Criteria:
 1 - Unacceptable: Fails to explain the need for policy change or provide any contextual information or evidence.
 
 Essential Elements Criteria:
+(Whether the changes being introduced or new provisions being introduced are clearly outlined in the draft) 
 5 - Outstanding: All changes or new provisions are clearly outlined, logically structured, and thoroughly detailed.
 4 - Exceeds Expectations: Changes or new provisions are well-outlined and detailed, with minor areas for improvement in clarity or structure.
 3 - Meets Expectations: Changes or new provisions are satisfactorily outlined but lack some detail or clarity.
@@ -51,6 +53,7 @@ Essential Elements Criteria:
 1 - Unacceptable: Changes or new provisions are not outlined or are extremely unclear.
 
 Impact Assessment Criteria:
+(Whether the Financial, Social, or Environmental impact that the proposed draft may have has been adequately analysed and stated) 
 5 - Outstanding: Provides comprehensive and detailed analysis of financial, social, and/or environmental impacts, supported by robust data.
 4 - Exceeds Expectations: Provides good analysis of potential impacts with adequate data, though some areas could be more detailed.
 3 - Meets Expectations: Provides satisfactory analysis of impacts but lacks depth or detail.
@@ -58,6 +61,7 @@ Impact Assessment Criteria:
 1 - Unacceptable: Fails to provide any meaningful analysis of impacts.
 
 Comprehension Criteria:
+(Whether efforts have been made to ensure that the draft can be easily understood by the average reader who may or may not have domain expertise in the subject of the draft) 
 5 - Outstanding: Draft is exceptionally clear, easy to understand, and accessible to readers with or without domain expertise.
 4 - Exceeds Expectations: Draft is clear and understandable, with minor areas for improvement in accessibility for the average reader.
 3 - Meets Expectations: Draft is generally understandable but may have some areas that are unclear or complex for the average citizen to understand.
