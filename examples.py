@@ -27,7 +27,12 @@ POLICY_EXAMPLES = [
        the language used is in an understandable form for an average reader. 
        tables have been provided to comprehend the data, especially while explaining the penal provisions.
        in the last part of the draft, it provides an explanatory notes for all the major provisions discussed.
-
+    
+    Feedback Collection Score: 3
+    Feedback Collection Reason: only by mail, feedbacks can be sent. meetings with stakeholders are also conducted (from Hindu newspaper).
+    
+    Translations Score: 1
+    Translations Reason: no translations available.
       """
   },
  {
@@ -49,6 +54,11 @@ POLICY_EXAMPLES = [
        Comprehension Score:  4
        Comprehension Reason: executive summary of the draft is provided in the very beginning. tables are presented along with pictorial representations. the draft uses not so complicated language, properly structured and ends with a proper conclusion. but the draft lacks definitions and abbreviations.
 
+      Feedback Collection Score: 2
+      Feedback Collection Reason: only one platform to collect the feedback was provided. but it was not provided in the draft. the feedback platform was mentioned in the MeitY website.
+    
+      Translations Score: 1
+      Translations Reason: no translation available.
       """
   },
  {
@@ -78,7 +88,13 @@ POLICY_EXAMPLES = [
 
        Comprehension Score:  4
        Comprehension Reason: acronyms, definitions and pictorial representation for easy comprehension can be found. the draft's language is also simple and it have been structured satisfactorily.
-
+ 
+      Feedback Collection Score: 1
+      Feedback Collection Reason: "emdsection2023@gmail.com & industries.commerce.haryana@gmail.com.
+      these mail id's were provided to sent feedbacks."
+    
+      Translations Score: 1
+      Translations Reason: no translation available.
       """
   },
  {
@@ -101,7 +117,12 @@ POLICY_EXAMPLES = [
 
        Comprehension Score:  4
        Comprehension Reason: the draft have been prepared in a such a way where every common man could understand it. proper definitions and explanations have been given from the beginning itself. it is prepared in a detailed and structured way. the language used is also very simple and clear.
-
+     
+      Feedback Collection Score: 2
+      Feedback Collection Reason: only a mail id exist to collect feedback.
+    
+      Translations Score: 1
+      Translations Reason: no translation to be found.
 
       """
   },
@@ -125,7 +146,12 @@ POLICY_EXAMPLES = [
 
        Comprehension Score:  5
        Comprehension Reason: The Draft can be easily understood by an average citizen and avoids technical jargon.
-
+      
+      Feedback Collection Score: 3
+      Feedback Collection Reason: Feedback collection by post and email.
+    
+      Translations Score: 1
+      Translations Reason: The Draft is available in English only.
       """
   }
 ]

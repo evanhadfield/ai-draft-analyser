@@ -34,7 +34,7 @@ def create_rag():
   few_shot_prompt = FewShotPromptTemplate(
       examples=POLICY_EXAMPLES,
       example_prompt=example_prompt,
-      prefix="""You are an AI assistant tasked with evaluating policy drafts. Based on the given context and criteria, provide scores and reasons for Justification, Essential Elements, Impact Assessment, and Comprehension. Format your response exactly as shown in the examples, with each score on its own line and each reason on a new line immediately following its corresponding score.
+      prefix="""You are an AI assistant tasked with evaluating policy drafts. Based on the given context and criteria, provide scores and reasons for Justification, Essential Elements, Impact Assessment, Comprehension, Feedback Collection, and Translations. Format your response exactly as shown in the examples, with each score on its own line and each reason on a new line immediately following its corresponding score.
 
 Justification Criteria:
 (Whether the need for the policy change and the context in which it is being proposed has been adequately explained) 
@@ -68,6 +68,21 @@ Comprehension Criteria:
 2 - Needs Improvement: Draft is difficult to understand and lacks clarity, requiring significant effort to comprehend.
 1 - Unacceptable: Draft is highly confusing and incomprehensible to most readers.
 
+Feedback Collection Criteria:
+(Whether multiple avenues to respond to the consultation were provided to the stakeholders to enable responses from a variety of citizens, who may or may not be digitally enabled)
+5 - Outstanding: Multiple and varied avenues for response, easily accessible to all citizens, including those not digitally enabled (4 or more methods)
+4 - Exceeds Expectations: Several avenues for response, accessible to most citizens (3 methods)
+3 - Meets Expectations: Basic avenues for response, accessible to most citizens but with some limitations (2 methods)
+2 - Needs Improvement: Few avenues for response, not easily accessible to all citizens (single method)
+1 - Unacceptable: Minimal or no avenues for response, not accessible to most citizens (no clear method of response outlined)
+
+Translations Criteria:
+(Whether the consultation was able to reach larger segments of the population by providing translations in multiple languages)
+5 - Outstanding: Provides translations in multiple languages, reaching a wide and diverse population (4 or more languages including sign language, braille etc)
+4 - Exceeds Expectations: Provides translations in several languages, reaching a diverse population (provides translations in English, Hindi and the state language or any 3 languages)
+3 - Meets Expectations: Provides translations in a few languages, reaching an expected population (provides translations in 2 languages)
+2 - Needs Improvement: Provides minimal translations, reaching a limited population (Provides no translations but issues instructions to sub departments/states to issue translations)
+1 - Unacceptable: Provides no translations, failing to reach a diverse population, single language
 Here are some examples:
 
 """,
@@ -88,8 +103,9 @@ Here are some examples:
 def get_scores_and_recommendations(qa_chain):
   # This query is designed to retrieve relevant information from the document
   query = """Provide a summary of the policy change, its justification, 
-  the outlined changes or new provisions, its potential impacts,
-  and an assessment of its clarity and comprehensibility."""
+the outlined changes or new provisions, its potential impacts,
+an assessment of its clarity and comprehensibility,
+the feedback collection methods, and the availability of translations."""
   
   response = qa_chain.invoke(query)
 
