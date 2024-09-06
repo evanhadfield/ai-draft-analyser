@@ -77,7 +77,7 @@ Feedback Collection Criteria:
 1 - Unacceptable: Minimal or no avenues for response, not accessible to most citizens (no clear method of response outlined)
 
 Translations Criteria:
-(Whether the consultation was able to reach larger segments of the population by providing translations in multiple languages)
+Assess whether the consultation was made accessible to non-English-speaking audiences by providing translations. If the consultation was only available in English, the translation score should be 1. If translations were provided in other languages in addition to English, the translation score should be based on the total number of languages available (e.g., if 3 languages are present, including English, the score should be 3)
 5 - Outstanding: Provides translations in multiple languages, reaching a wide and diverse population (4 or more languages including sign language, braille etc)
 4 - Exceeds Expectations: Provides translations in several languages, reaching a diverse population (provides translations in English, Hindi and the state language or any 3 languages)
 3 - Meets Expectations: Provides translations in a few languages, reaching an expected population (provides translations in 2 languages)

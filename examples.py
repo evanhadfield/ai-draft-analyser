@@ -31,8 +31,8 @@ POLICY_EXAMPLES = [
     Feedback Collection Score: 3
     Feedback Collection Reason: only by mail, feedbacks can be sent. meetings with stakeholders are also conducted (from Hindu newspaper).
     
-    Translations Score: 1
-    Translations Reason: no translations available.
+    Translations Score: 2
+    Translations Reason: The document is available in both English and Hindi.
       """
   },
  {
@@ -58,7 +58,7 @@ POLICY_EXAMPLES = [
       Feedback Collection Reason: only one platform to collect the feedback was provided. but it was not provided in the draft. the feedback platform was mentioned in the MeitY website.
     
       Translations Score: 1
-      Translations Reason: no translation available.
+      Translations Reason: The draft is available only in English.
       """
   },
  {
@@ -94,7 +94,7 @@ POLICY_EXAMPLES = [
       these mail id's were provided to sent feedbacks."
     
       Translations Score: 3
-      Translations Reason: The Draft is available in English and Hindi.
+      Translations Reason: Translations are made available in English and Hindi
       """
   },
  {
