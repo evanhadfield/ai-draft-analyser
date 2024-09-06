@@ -93,8 +93,8 @@ POLICY_EXAMPLES = [
       Feedback Collection Reason: "emdsection2023@gmail.com & industries.commerce.haryana@gmail.com.
       these mail id's were provided to sent feedbacks."
     
-      Translations Score: 1
-      Translations Reason: no translation available.
+      Translations Score: 3
+      Translations Reason: The Draft is available in English and Hindi.
       """
   },
  {
@@ -121,8 +121,8 @@ POLICY_EXAMPLES = [
       Feedback Collection Score: 2
       Feedback Collection Reason: only a mail id exist to collect feedback.
     
-      Translations Score: 1
-      Translations Reason: no translation to be found.
+      Translations Score: 3
+      Translations Reason: Translations made available in English and Hindi
 
       """
   },
