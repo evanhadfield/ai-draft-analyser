@@ -2,39 +2,114 @@
 import os
 from pinecone import Pinecone
 from langchain_openai import OpenAIEmbeddings
-from langchain_anthropic import ChatAnthropic
-from langchain.chains import RetrievalQA
 from langchain_core.prompts.few_shot import FewShotPromptTemplate
 from langchain_core.prompts.prompt import PromptTemplate
 from langchain_community.vectorstores import Pinecone as LangchainPinecone
+from langchain.chains import RetrievalQA
 from examples import POLICY_EXAMPLES
+from langchain_core.language_models.chat_models import BaseChatModel
+from langchain_core.messages import BaseMessage, HumanMessage, AIMessage
+from typing import Any, List, Optional
+import requests
+from dotenv import load_dotenv
+from pydantic import Field
+from langchain_core.outputs import ChatGeneration, ChatResult
+
+class CustomChatModel(BaseChatModel):
+    api_key: str = Field(..., description="API key for the custom model")
+    api_url: str = Field(
+        default="https://cm.cip.org/api/v1/chat/completions",
+        description="API endpoint URL"
+    )
+    temperature: float = Field(default=0, description="Sampling temperature")
+    
+    def __init__(self, api_key: str, temperature: float = 0):
+        super().__init__(api_key=api_key, temperature=temperature)
+    
+    def _generate(self, messages: List[BaseMessage], stop: Optional[List[str]] = None, **kwargs: Any):
+        formatted_messages = [
+            {
+                "role": "user" if isinstance(msg, HumanMessage) else "assistant",
+                "content": msg.content
+            }
+            for msg in messages
+        ]
+        
+        headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json"
+        }
+        
+        data = {
+            "messages": formatted_messages,
+            "temperature": self.temperature
+        }
+        
+        # Debug logging
+        print("\n=== Debug Information ===")
+        print(f"API URL type: {type(self.api_url)}")
+        print(f"API URL value: {self.api_url}")
+        print(f"Headers: {headers}")
+        print(f"Request Data: {data}")
+        
+        url = self.api_url.default if hasattr(self.api_url, 'default') else "https://cm.cip.org/api/v1/chat/completions"
+        
+        try:
+            print(f"\nMaking request to: {url}")
+            response = requests.post(url, headers=headers, json=data)
+            print(f"\nResponse status: {response.status_code}")
+            print(f"Response content: {response.text}")
+            response.raise_for_status()
+            
+            result = response.json()
+            message = AIMessage(content=result["choices"][0]["message"]["content"])
+            generation = ChatGeneration(message=message)
+            return ChatResult(generations=[generation])
+        except Exception as e:
+            print(f"\nError occurred: {str(e)}")
+            raise
+
+    @property
+    def _llm_type(self) -> str:
+        return "custom_chat_model"
 
 def create_rag():
-  # Initialize embeddings (still using OpenAI)
-  embeddings = OpenAIEmbeddings()
+    # Load environment variables first
+    load_dotenv()
+    
+    # Get API key and verify it exists
+    api_key = os.getenv("CM_API_KEY")
+    if not api_key:
+        raise ValueError("CM_API_KEY environment variable is not set")
+    
+    # Initialize embeddings
+    embeddings = OpenAIEmbeddings()
+    
+    # Create a Langchain wrapper for Pinecone
+    vectorstore = LangchainPinecone.from_existing_index(
+        index_name="civis",
+        embedding=embeddings,
+        text_key="text",
+        namespace=""
+    )
+    
+    # Initialize the custom chat model
+    llm = CustomChatModel(
+        api_key=api_key,
+        temperature=0
+    )
 
-  # Create a Langchain wrapper for Pinecone
-  vectorstore = LangchainPinecone.from_existing_index(
-      index_name="civis",
-      embedding=embeddings,
-      text_key="text",
-      namespace=""
-  )
+    # Create the example prompt
+    example_prompt = PromptTemplate(
+        input_variables=["context", "scores"],
+        template="Context: {context}\n\nScores:\n{scores}"
+    )
 
-  # Initialize the Anthropic language model
-  llm = ChatAnthropic(model="claude-3-5-sonnet-20240620", temperature=0)
-
-  # Create the example prompt
-  example_prompt = PromptTemplate(
-      input_variables=["context", "scores"],
-      template="Context: {context}\n\nScores:\n{scores}"
-  )
-
-  # Create the few-shot prompt template with added criteria definitions
-  few_shot_prompt = FewShotPromptTemplate(
-      examples=POLICY_EXAMPLES,
-      example_prompt=example_prompt,
-      prefix="""You are an AI assistant tasked with evaluating policy drafts. Based on the given context and criteria, provide scores and reasons for Justification, Essential Elements, Impact Assessment, Comprehension, Feedback Collection, and Translations. Format your response exactly as shown in the examples, with each score on its own line and each reason on a new line immediately following its corresponding score.
+    # Create the few-shot prompt template with added criteria definitions
+    few_shot_prompt = FewShotPromptTemplate(
+        examples=POLICY_EXAMPLES,
+        example_prompt=example_prompt,
+        prefix="""You are an AI assistant tasked with evaluating policy drafts. Based on the given context and criteria, provide scores and reasons for Justification, Essential Elements, Impact Assessment, Comprehension, Feedback Collection, and Translations. Format your response exactly as shown in the examples, with each score on its own line and each reason on a new line immediately following its corresponding score.
 
 Justification Criteria:
 (Whether the need for the policy change and the context in which it is being proposed has been adequately explained) 
@@ -86,19 +161,19 @@ Assess whether the consultation was made accessible to non-English-speaking audi
 Here are some examples:
 
 """,
-      suffix="\nNow, evaluate the following policy draft:\n\nContext: {context}\n\nProvide scores and reasons in the exact same format as the examples, without any introductory text.",
-      input_variables=["context"]
-  )
+        suffix="\nNow, evaluate the following policy draft:\n\nContext: {context}\n\nProvide scores and reasons in the exact same format as the examples, without any introductory text.",
+        input_variables=["context"]
+    )
 
-  # Create the RetrievalQA chain
-  qa_chain = RetrievalQA.from_chain_type(
-      llm=llm,
-      chain_type="stuff",
-      retriever=vectorstore.as_retriever(),
-      chain_type_kwargs={"prompt": few_shot_prompt}
-  )
+    # Create the RetrievalQA chain
+    qa_chain = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=vectorstore.as_retriever(),
+        chain_type_kwargs={"prompt": few_shot_prompt}
+    )
 
-  return qa_chain
+    return qa_chain
 
 def get_scores_and_recommendations(qa_chain):
   # This query is designed to retrieve relevant information from the document
